@@ -1,0 +1,53 @@
+#! django-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: django
+    namespace: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: django
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+            com.docker.compose.service: django
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+                com.docker.compose.service: django
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: django
+                  image: django-docker-compose-celery-redis-postgresql-django
+                  imagePullPolicy: IfNotPresent
+                  args:
+                    - python
+                    - manage.py
+                    - runserver
+                    - 0.0.0.0:8000
+                  env:
+                    - name: CELERY_BACKEND
+                      value: "redis://redis:6379/0"
+                    - name: CELERY_BROKER
+                      value: "redis://redis:6379/0"
+                    - name: DEBUG
+                      value: "1"
+                    - name: DJANGO_ALLOWED_HOSTS
+                      value: "localhost 127.0.0.1 [::1]"
+                  ports:
+                    - name: django-8000
+                      containerPort: 8000
+                  volumeMounts:
+                    - name: usr-src-app
+                      mountPath: /usr/src/app
+            volumes:
+                - name: usr-src-app
+                  hostPath:
+                    path: C:\Users\Dell\Django-Docker-Compose-Celery-Redis-PostgreSQL

@@ -1,0 +1,21 @@
+# check if there is at least one published port
+
+#! django-service.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: django-published
+    namespace: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: django
+spec:
+    selector:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: django
+    ports:
+        - name: django-8000
+          port: 8000
+          protocol: TCP
+          targetPort: django-8000

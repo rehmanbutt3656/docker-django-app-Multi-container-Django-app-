@@ -1,0 +1,46 @@
+#! pgdb-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: pgdb
+    namespace: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: pgdb
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+            com.docker.compose.service: pgdb
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+                com.docker.compose.service: pgdb
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: pgdb
+                  image: postgres
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - name: POSTGRES_DB
+                      value: "postgres"
+                    - name: POSTGRES_PASSWORD
+                      value: "postgres"
+                    - name: POSTGRES_USER
+                      value: "postgres"
+                  ports:
+                    - name: pgdb-5432
+                      containerPort: 5432
+                  volumeMounts:
+                    - name: var-lib-postgresql-data
+                      mountPath: /var/lib/postgresql/data
+            volumes:
+                - name: var-lib-postgresql-data
+                  persistentVolumeClaim:
+                    claimName: pgdb-pgdata

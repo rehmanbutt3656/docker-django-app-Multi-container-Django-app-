@@ -1,0 +1,8 @@
+#! 0-django-docker-compose-celery-redis-postgresql-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql

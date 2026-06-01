@@ -1,0 +1,18 @@
+#! pgdb-expose.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: pgdb
+    namespace: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: pgdb
+spec:
+    selector:
+        com.docker.compose.project: django-docker-compose-celery-redis-postgresql
+        com.docker.compose.service: pgdb
+    ports:
+        - name: pgdb-5432
+          port: 5432
+          targetPort: pgdb-5432

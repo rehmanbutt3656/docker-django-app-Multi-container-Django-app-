@@ -1,0 +1,11 @@
+# check if there is at least one published port
+
+#! django-service.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: django-published
+    namespace: django-docker-compose-celery-redis-postgresql
+spec:
+    type: LoadBalancer

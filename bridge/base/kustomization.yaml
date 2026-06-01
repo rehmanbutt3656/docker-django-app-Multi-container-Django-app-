@@ -1,0 +1,16 @@
+#! kustomization.yaml
+# Generated code, do not edit
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - 0-django-docker-compose-celery-redis-postgresql-namespace.yaml
+    - celery-deployment.yaml
+    - default-network-policy.yaml
+    - django-deployment.yaml
+    - django-expose.yaml
+    - django-service.yaml
+    - pgdb-deployment.yaml
+    - pgdb-expose.yaml
+    - pgdb-pgdata-persistentVolumeClaim.yaml
+    - redis-deployment.yaml
+    - redis-expose.yaml

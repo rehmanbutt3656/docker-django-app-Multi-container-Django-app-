@@ -1,0 +1,18 @@
+#! pgdb-pgdata-persistentVolumeClaim.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: pgdb-pgdata
+    namespace: django-docker-compose-celery-redis-postgresql
+    labels:
+        com.docker.compose.service: pgdb
+        com.docker.compose.volume: pgdata
+spec:
+    accessModes:
+        # TODO would need to check which services use this volume
+        - ReadWriteOnce
+    volumeMode: Filesystem
+    resources:
+        requests:
+            storage: 100Mi

@@ -1,0 +1,9 @@
+#! pgdb-pgdata-persistentVolumeClaim.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: pgdb-pgdata
+    namespace: django-docker-compose-celery-redis-postgresql
+spec:
+    storageClassName: "hostpath" # see docker/desktop-storage-provisioner
