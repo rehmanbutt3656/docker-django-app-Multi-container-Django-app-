@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-*ml@mq+d4s-)pw9x958uu!(en6!pqq$-ty^tqxc=uh*un(2$nr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'docker-django-app-multi-container-django.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 
